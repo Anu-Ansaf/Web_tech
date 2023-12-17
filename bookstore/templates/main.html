@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .book {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .book img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button-container a:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .login{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bookstore App</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Books</a>
+    <a href="#">Contact</a>
+    <button class='login'><a href="{% url 'login' %}" class="login-button">Login</a></button>
+    <button class='login'><a href="{% url 'signup' %}" class="signup-button">Signup</a></button>
+</nav>
+
+<div class="book-container">
+    <div class="book">
+        <img src="{% static '1.jpg' %}" alt="Book 1">
+        <h2>Book Title 1</h2>
+        <p>Author: Author Name</p>
+        <p>Genre: Fiction</p>
+        <p>Price: $19.99</p>
+    </div>
+
+    <div class="book">
+        <img src="{% static '2.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+
+    <div class="book">
+        <img src="{% static '3.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+
+    <div class="book">
+        <img src="{% static '4.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+
+    <div class="book">
+        <img src="{% static '5.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '6.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '7.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '8.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+
+    <div class="book">
+        <img src="{% static '9.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '10.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '11.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '12.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '13.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+    <div class="book">
+        <img src="{% static '1.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+    </div>
+
+    <!-- Add more books as needed -->
+
+</div>
+
+</body>
+</html>

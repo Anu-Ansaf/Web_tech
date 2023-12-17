@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Bookstore App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .signup-container {
+            text-align: center;
+            margin: 50px auto;
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .signup-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .signup-container button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signup-container button:hover {
+            background-color: #555;
+        }
+        .login{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bookstore App</h1>
+</header>
+
+<nav>
+    <a href="{% url 'root' %}">Home</a>
+    <a href="#">Books</a>
+    <a href="#">Contact</a>
+    <button class='login'><a href="{% url 'login' %}" class="login-button">Login</a></button>
+    {% comment %} <button class='login'><a href="{% url 'signup' %}" class="signup-button">Signup</a></button> {% endcomment %}
+</nav>
+
+<div class="signup-container">
+    <h2>Signup</h2>
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <label for="email">Name:</label>
+        <input type="text" name="name" id="name" placeholder="John" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="example@dmain.com" required>
+
+        <label for="phonenumber">Phone Number:</label>
+        <input type="tel" name="phonenumber" id="phonenumber" pattern="[0-9]{10}" placeholder="e.g., 1234567890" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="repassword">Re-enter Password:</label>
+        <input type="password" name="repassword" id="repassword" required>
+
+       
+
+        <button type="submit">Signup</button>
+    </form>
+</div>
+
+</body>
+</html>
