@@ -1,0 +1,418 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .book {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .book img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button-container a:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .login{
+            background-color: black;
+        }
+        .buy-now-button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .buy-now-button:hover {
+            background-color: #218838;
+        }
+        .user-banner {
+            background-color: #1f72cc;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px;
+            border: 2px solid #0056b3; /* Darker border color */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+    </style>
+</head>
+<body>
+
+
+<header>
+    <h1>Bookstore App</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Books</a>
+    <a href="#">Contact</a>
+    <button class='login'><a href="{% url 'login' %}" class="login-button">Login</a></button>
+    <button class='login'><a href="{% url 'signup' %}" class="signup-button">Signup</a></button>
+</nav>
+{% if user.is_authenticated %}
+    <div class="user-banner">
+        Welcome, {{ user.username }}! | Email: {{ user.email }}
+    </div>
+{% endif %}
+
+<div class="book-container">
+    <div class="book" id="book1">
+        <img src="{% static '1.jpg' %}" alt="Book 1">
+        <h2>Book Title 1</h2>
+        <p>Author: Author Name</p>
+        <p>Genre: Fiction</p>
+        <p>Price: $19.99</p>
+       
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="1">
+            <input type="hidden" name="price" value="19.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+
+    <div class="book" id="book2">
+        <img src="{% static '2.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+        
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="2">
+            <input type="hidden" name="price" value="24.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+
+    <div class="book" id="book3">
+        <img src="{% static '3.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $50.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="3">
+            <input type="hidden" name="price" value="50.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+
+    <div class="book" id="book4">
+        <img src="{% static '4.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $20.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="4">
+            <input type="hidden" name="price" value="20.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+
+    <div class="book" id="book5">
+        <img src="{% static '5.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $14.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="5">
+            <input type="hidden" name="price" value="14.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book6">
+        <img src="{% static '6.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $4.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="6">
+            <input type="hidden" name="price" value="4.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book7">
+        <img src="{% static '7.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $80.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="7">
+            <input type="hidden" name="price" value="80.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book8">
+        <img src="{% static '8.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $70.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="8">
+            <input type="hidden" name="price" value="70.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+
+    <div class="book" id="book9">
+        <img src="{% static '9.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $24.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="9">
+            <input type="hidden" name="price" value="99.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book10">
+        <img src="{% static '10.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $98.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="10">
+            <input type="hidden" name="price" value="98.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book11">
+        <img src="{% static '11.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $45.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="11">
+            <input type="hidden" name="price" value="45.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book12">
+        <img src="{% static '12.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $49.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="12">
+            <input type="hidden" name="price" value="49.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book13">
+        <img src="{% static '13.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $67.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="13">
+            <input type="hidden" name="price" value="67.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+    <div class="book" id="book14">
+        <img src="{% static '1.jpg' %}" alt="Book 2">
+        <h2>Book Title 2</h2>
+        <p>Author: Another Author</p>
+        <p>Genre: Mystery</p>
+        <p>Price: $47.99</p>
+        <form id="buyNowForm1" action='{% url 'payment'%}' method='POST'>
+            {% csrf_token %}
+            <input type="hidden" name="book" value="14">
+            <input type="hidden" name="price" value="47.99">
+            <button type="submit" class="buy-now-button">Buy Now</button>
+        </form>
+    </div>
+
+    <!-- Add more books as needed -->
+
+</div>
+<input type="hidden" id="csrf_token" value="{% csrf_token %}">
+
+    <!-- JavaScript script -->
+    {% comment %} <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Attach click event to Buy Now buttons
+            document.querySelectorAll('.buy-now-button').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    // Get book details
+                    const book = this.closest('.book');
+
+                    if (!book) {
+                        console.error('Unable to find book element.');
+                        return;
+                    }
+
+                    const bookId = book.id;
+                    const titleElement = book.querySelector('h2');
+                    const priceElement = book.querySelector('p.price');
+
+                    if (!titleElement || !priceElement) {
+                        console.error('Unable to find title or price elements within the book.');
+                        return;
+                    }
+
+                    const title = titleElement.textContent;
+                    const price = priceElement.textContent;
+
+                    // Include CSRF token
+                    const csrfToken = document.getElementById('csrf_token').value;
+
+                    // Create data to send to the backend
+                    const data = {
+                        bookId: bookId,
+                        title: title,
+                        price: price,
+                        csrfmiddlewaretoken: csrfToken,
+                    };
+
+                    // Send data to the backend using the Fetch API
+                    fetch("{% url 'payment' %}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Handle the response from the backend
+                        console.log('Data sent successfully:', data);
+                        // You can add additional logic here if needed
+                    })
+                    .catch(error => {
+                        console.error('Error sending data:', error);
+                    });
+                });
+            });
+        });
+    </script> {% endcomment %}
+
+
+
+
+
+</body>
+</html>
